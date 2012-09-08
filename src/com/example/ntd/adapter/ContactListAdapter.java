@@ -2,6 +2,7 @@ package com.example.ntd.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public class ContactListAdapter extends ArrayAdapter<Contact> {
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
         if (convertView == null) {
@@ -69,6 +70,11 @@ public class ContactListAdapter extends ArrayAdapter<Contact> {
         OnClickListener textViewClickListener = new OnClickListener() { 
             public void onClick(View v) {
                 Log.d(Util.APP_TAG, "Clicked on " + ((TextView)v).getText());
+                Bundle bundle = new Bundle();
+                bundle.putInt(Util.BundleType.ICON_ID, getItem(position).getIconID());
+                bundle.putString(Util.BundleType.NAME, getItem(position).getName());
+                bundle.putBoolean(Util.BundleType.IS_DRIVING, getItem(position).isDriving());
+                chatIntent.putExtra(Util.IntentType.INTENT_RECEIVER_SELECT, bundle);
                 ContactListAdapter.this.getContext().startActivity(chatIntent);
             }
         };

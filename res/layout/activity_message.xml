@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dip"
+    android:paddingRight="8dip" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp" >
+        <ImageView
+            android:id="@+id/msgPhotoIcon"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/bar" />
+        <TextView
+            android:id="@+id/msgNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/msgDrivingIcon"
+            android:layout_toRightOf="@+id/msgPhotoIcon"
+            android:text="Name"
+            android:textSize="25dip"/>
+
+        <ImageView
+            android:id="@+id/msgDrivingIcon"
+            android:layout_width="36dip"
+            android:layout_height="36dip"
+            android:layout_margin="2dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/driving" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal" />
+    <RelativeLayout
+        android:layout_width="311dp"
+        android:layout_height="wrap_content" >
+        <EditText
+            android:id="@+id/userText"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/btnSend"
+            android:ems="10"
+            android:width="400dip" >
+
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/send" />
+
+    </RelativeLayout>
+
+</LinearLayout>
