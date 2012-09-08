@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">NTD</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">NTD</string>
+    
+    <string name="photo">Personal photo</string>
+    <string name="driving_icon">Driving status</string>
+
+</resources>
