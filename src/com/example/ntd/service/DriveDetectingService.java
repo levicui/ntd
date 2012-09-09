@@ -1,7 +1,17 @@
 package com.example.ntd.service;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import org.apache.http.client.ClientProtocolException;
 
 import android.app.Service;
 import android.content.Intent;
@@ -14,8 +24,9 @@ import com.example.ntd.util.Util;
 public class DriveDetectingService extends Service {
 	
 	private Timer locationUpdateTimer;
+    public static final String INFO = "DriveDetectingService";
 	
-	@Override
+    @Override
 	public IBinder onBind(Intent arg0) {
 		// TODO Auto-generated method stub
 		return null;
@@ -49,7 +60,25 @@ public class DriveDetectingService extends Service {
 	}
 	
 	private void updateDrivingStatus() {
-	    Intent intent = new Intent(Util.IntentType.INTENT_UPDATE_STATUS);
+	    try {
+			URL url = new URL(Util.getUpdateURL(Util.PHONE_NUM, 0));
+			URLConnection urlConn = url.openConnection();
+			HttpURLConnection httpConn = (HttpURLConnection) urlConn;
+			if (httpConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+				InputStream responseStream = httpConn.getInputStream();
+				Reader reader = new InputStreamReader(responseStream);
+				responseStream.close();
+
+			    Intent intent = new Intent(Util.IntentType.INTENT_UPDATE_STATUS);
+			    sendBroadcast(intent);
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

@@ -15,16 +15,14 @@ public class FakeData {
 	static public Contact[] getContacts() {
 		if (contacts == null) {
 			List<Contact> contactList = new ArrayList<Contact>();
-			contactList.add(new Contact("Boy",
-					"Please reply my email as soon as possible...", true,
+			contactList.add(new Contact("Boy", "2132715372","Please reply my email as soon as possible...", true,
 					R.drawable.boy));
-			contactList.add(new Contact("Girl", "Go to lunch?", false,
+			contactList.add(new Contact("Girl", "1234567890", "Go to lunch?", false,
 					R.drawable.girl));
-			contactList.add(new Contact("A Man", "", false, R.drawable.man));
-			contactList.add(new Contact("Foo", "Haha", false, R.drawable.foo));
-			contactList.add(new Contact("Bar", "", true, R.drawable.bar));
-			contactList.add(new Contact("Another Man", "OK", false,
-					R.drawable.man));
+			contactList.add(new Contact("A Man", "9108081014", "", false, R.drawable.man));
+			contactList.add(new Contact("Foo", "1234567896", "Haha", false, R.drawable.foo));
+			contactList.add(new Contact("Bar", "1234567891", "", true, R.drawable.bar));
+			contactList.add(new Contact("Another Man", "1234567811", "OK", false, R.drawable.man));
 			contacts = contactList.toArray(new Contact[contactList.size()]);
 			return contacts;
 		}
